@@ -1,11 +1,11 @@
 name: Sync Audio Files to Cloudflare R2
 
 on:
-  workflow_dispatch: # 支持在 GitHub 网页 Actions 界面手动点击运行
+  workflow_dispatch:
   push:
     branches:
       - main
-      - master # 兼容 main 和 master 分支
+      - master
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          aws-region: auto
+          aws-region: us-east-1
 
       - name: Sync MP3 and FLAC files to Cloudflare R2
         run: |
