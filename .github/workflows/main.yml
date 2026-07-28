@@ -3,7 +3,7 @@ name: Deploy Audio Files to Cloudflare R2
 on:
   push:
     branches:
-      - main  # 当推送到 main 分支时触发
+      - main  # 如果你的默认分支叫 master，请改成 master
 
 jobs:
   deploy:
@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1  # 仅拉取最新一次提交，节省时间和磁盘空间
 
       - name: Setup AWS CLI
         uses: aws-actions/configure-aws-credentials@v4
@@ -23,6 +25,4 @@ jobs:
         run: |
           aws s3 sync . s3://${{ secrets.R2_BUCKET_NAME }} \
             --endpoint-url ${{ secrets.R2_ENDPOINT }} \
-            --exclude "*" \
-            --include "*.mp3" \
-            --include "*.flac"
+            --exclude
