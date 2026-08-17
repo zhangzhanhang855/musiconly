@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    /* Basic Styling - Customize as desired */
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+
+    .calculator-container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .calculator-display {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .number-input {
+      width: 80%;
+      margin: 0 auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 20px;
+    }
+
+    .operation-input {
+      width: 80%;
+      margin: 0 auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .operation-input input {
+      width: 80%;
+      margin: 0 auto;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .result-display {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .result-display p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator-container">
+    <div class="calculator-display">
+      <input type="text" id="display" placeholder="0">
+      <button onclick="add()">+</button>
+      <button onclick="subtract()">-</button>
+      <button onclick="multiply()">*</button>
+      <button onclick="divide()">/</button>
+      <button onclick="clear()">C</button>
+    </div>
+
+    <div class="operation-input">
+      <input type="text" id="operation" placeholder="0">
+      <button onclick="calculate()">Calculate</button>
+    </div>
+
+    <div class="result-display">
+      <p>Result: <span id="result"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function add() {
+      var num1 = parseFloat(document.getElementById("display").value);
+      var num2 = parseFloat(document.getElementById("operation").value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter numbers.");
+        return;
+      }
+
+      document.getElementById("display").value += num1;
+      document.getElementById("operation").value += num2;
+    }
+
+    function subtract() {
+      var num1 = parseFloat(document.getElementById("display").value);
+      var num2 = parseFloat(document.getElementById("operation").value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter numbers.");
+        return;
+      }
+
+      document.getElementById("display").value = num1 - num2;
+    }
+
+    function multiply() {
+      var num1 = parseFloat(document.getElementById("display").value);
+      var num2 = parseFloat(document.getElementById("operation").value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter numbers.");
+        return;
+      }
+
+      document.getElementById("display").value = num1 * num2;
+    }
+
+    function divide() {
+      var num1 = parseFloat(document.getElementById("display").value);
+      var num2 = parseFloat(document.getElementById("operation").value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter numbers.");
+        return;
+      }
+
+      if (num2 === 0) {
+        alert("Cannot divide by zero.");
+        return;
+      }
+
+      document.getElementById("display").value = num1 / num2;
+    }
+
+    function clear() {
+      document.getElementById("display").value = "0";
+      document.getElementById("operation").value = "0";
+    }
+  </script>
+
+</body>
+</html>
